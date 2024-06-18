@@ -5,11 +5,13 @@ const dotenv=require('dotenv');
 const colors=require('colors');
 const connectDB = require('./config/db');
 const testRouter = require('./routes/test');
-const userRouter=require('./routes/authRoutes')
+const authRouter=require('./routes/authRoutes');
+const userRouter=require('./routes/userRoutes');
 const cors = require('cors');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const errorMiddleware = require('./middlewares/errorMiddleware');
+require('express-async-errors');
 // dotenv configuration
 dotenv.config()
 // Database connection
@@ -23,7 +25,8 @@ app.use(morgan('dev'));
 
 // Routes
 app.use('/api/v1/test',testRouter);
-app.use('/api/v1/users',userRouter);
+app.use('/api/v1/auth',authRouter);
+app.use('/api/v1/user',userRouter);
 
 // validation middleware
 app.use(errorMiddleware);
