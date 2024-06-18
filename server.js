@@ -12,6 +12,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 require('express-async-errors');
+const util=require('util');
+const encoder=new util.TextEncoder();
 // dotenv configuration
 dotenv.config()
 // Database connection
