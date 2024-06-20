@@ -7,6 +7,7 @@ const connectDB = require('./config/db');
 const testRouter = require('./routes/test');
 const authRouter=require('./routes/authRoutes');
 const userRouter=require('./routes/userRoutes');
+const jobRouter=require('./routes/jobRoute');
 const cors = require('cors');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -29,6 +30,7 @@ app.use(morgan('dev'));
 app.use('/api/v1/test',testRouter);
 app.use('/api/v1/auth',authRouter);
 app.use('/api/v1/user',userRouter);
+app.use('/api/v1/job',jobRouter);
 
 // validation middleware
 app.use(errorMiddleware);
